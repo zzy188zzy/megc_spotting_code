@@ -1,0 +1,20 @@
+ninja_required_version = 1.3
+cxx = c++
+
+cflags = -pthread -B /data2/zyzhang/conda-environment/videomae/compiler_compat -Wl,--sysroot=/ -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -I/data2/zyzhang/conda-environment/videomae/lib/python3.8/site-packages/torch/include -I/data2/zyzhang/conda-environment/videomae/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -I/data2/zyzhang/conda-environment/videomae/lib/python3.8/site-packages/torch/include/TH -I/data2/zyzhang/conda-environment/videomae/lib/python3.8/site-packages/torch/include/THC -I/data2/zyzhang/conda-environment/videomae/include/python3.8 -c
+post_cflags = -fopenmp -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=nms_1d_cpu -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++14
+ldflags = 
+
+rule compile
+  command = $cxx -MMD -MF $out.d $cflags -c $in -o $out $post_cflags
+  depfile = $out.d
+  deps = gcc
+
+
+
+build /data2/zyzhang/MEGC/actionformer_release-main/libs/utils/build/temp.linux-x86_64-cpython-38/./csrc/nms_cpu.o: compile /data2/zyzhang/MEGC/actionformer_release-main/libs/utils/csrc/nms_cpu.cpp
+
+
+
+
+
