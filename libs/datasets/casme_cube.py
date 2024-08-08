@@ -63,7 +63,7 @@ class CASMEDataset(Dataset):
 
         # dataset specific attributes
         self.db_attributes = {
-            'dataset_name': 'samm',
+            'dataset_name': 'casme',
             'tiou_thresholds': np.linspace(0.3, 0.7, 5),
             # we will mask out cliff diving
             'empty_label_ids': [],

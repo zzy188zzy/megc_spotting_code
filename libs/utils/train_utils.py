@@ -440,9 +440,9 @@ def valid_one_epoch(
             data_save['type'].append("mae")
         else:
             data_save['type'].append("me")
-    df = pd.DataFrame(data_save)  
-    df.to_csv('result/cas_result.csv', index=False)  
-
+    df = pd.DataFrame(data_save)
+    df.to_csv('csv_files/cas_pred_recall.csv', index=False)
+    # df.to_csv('csv_files/samm_pred_recall.csv', index=False)
 
     # if evaluator is not None:
     #     if ext_score_file is not None and isinstance(ext_score_file, str):
